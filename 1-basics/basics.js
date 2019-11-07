@@ -39,11 +39,12 @@ describe("basics", function() {
 
             ////////////////////////////////////////////////////////////////////
             // Declare "someVariable" in way so that the declaration is NOT hoisted.
-            // ✏️ ADD CODE HERE ✏️
-        (() => {
-            someVariable;
-        })
-        const someVariable=undefined;
+            // ✏️ ADD CODE HERE 
+       
+            () => {
+                someVariable
+            };
+           someVariable;
             ////////////////////////////////////////////////////////////////////
 
             expect(someVariable).to.equal(undefined);
@@ -115,7 +116,10 @@ describe("basics", function() {
             // written in way that we don't have to write all the zeros AFTER the point.
             // Write it as a string so that the .length property can be checked.
             // ✏️ EDIT NEXT LINE ✏️
-            const someNumber = "...";
+            const someNumber = "1e1";
+            typeof someNumber;
+            someNumber.length;
+            Number(someNumber);
             ////////////////////////////////////////////////////////////////////
 
             expect(typeof someNumber).to.equal("string");
@@ -132,7 +136,10 @@ describe("basics", function() {
             // written in way that we don't have to write all the zeros BEFORE the point.
             // Write it as a string so that the .length property can be checked.
             // ✏️ EDIT NEXT LINE ✏️
-            const someNumber = "...";
+            const someNumber = ".2";
+            typeof someNumber;
+            someNumber.length;
+            Number(someNumber);
             ////////////////////////////////////////////////////////////////////
 
             expect(typeof someNumber).to.equal("string");
@@ -145,7 +152,9 @@ describe("basics", function() {
         it("should run without errors", function() {
             ////////////////////////////////////////////////////////////////////
             // ✏️ ADD CODE HERE ✏️
-
+            const object = {
+                someProperty: 1
+            };
             ////////////////////////////////////////////////////////////////////
 
             expect(object instanceof Object).to.equal(true);
@@ -161,7 +170,9 @@ describe("basics", function() {
 
             ////////////////////////////////////////////////////////////////////
             // ✏️ ADD CODE HERE ✏️
-
+            object.someProperty = undefined;
+            object.hasOwnProperty("someProperty");
+            "someProperty" in object;
             ////////////////////////////////////////////////////////////////////
 
             // object.someProperty is undefined...
@@ -177,10 +188,13 @@ describe("basics", function() {
             const object = {
                 someProperty: 1
             };
-
+    
             ////////////////////////////////////////////////////////////////////
             // ✏️ ADD CODE HERE ✏️
-
+            delete object.someProperty;
+            object.someProperty;
+            object.hasOwnProperty ("someProperty");
+            "someProperty" in object;
             ////////////////////////////////////////////////////////////////////
 
             // object.someProperty is undefined...
@@ -197,6 +211,8 @@ describe("basics", function() {
 
             ////////////////////////////////////////////////////////////////////
             // ✏️ ADD CODE HERE ✏️
+            const secondArray = firstArray;
+            firstArray;
 
             ////////////////////////////////////////////////////////////////////
 
@@ -204,6 +220,7 @@ describe("basics", function() {
 
             // We add a 4 at the end of firstArray
             firstArray.push(4);
+            secondArray;
 
             expect(firstArray).to.eql([1, 2, 3, 4]);
             // Look at that: secondArray also has the 4. This means
@@ -219,6 +236,8 @@ describe("basics", function() {
             ////////////////////////////////////////////////////////////////////
             // See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from
             // ✏️ ADD CODE HERE ✏️
+            firstArray;
+            const secondArray = [1,2,3];
 
             ////////////////////////////////////////////////////////////////////
 
@@ -227,7 +246,8 @@ describe("basics", function() {
 
             // We add a 4 at the end of firstArray
             firstArray.push(4);
-
+            firstArray;
+            secondArray;
             expect(firstArray).to.eql([1, 2, 3, 4]);
             // And now secondArray doesn't have the 4.
             // This means that secondArray is a real copy of firstArray.
@@ -240,7 +260,10 @@ describe("basics", function() {
             ////////////////////////////////////////////////////////////////////
             // See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array
             // ✏️ ADD CODE HERE ✏️
-
+            const longArray = [];
+            longArray instanceof(Array);
+            longArray.length = 100;
+            
             ////////////////////////////////////////////////////////////////////
 
             expect(longArray).to.be.instanceOf(Array);
@@ -257,6 +280,12 @@ describe("basics", function() {
             // By observing their casting behavior in the tests below, you can find
             // out the required types.
             // ✏️ ADD CODE HERE ✏️
+            const firstVariable = 3;
+            const secondVariable = "1";
+            firstVariable + secondVariable;
+            firstVariable - Number(secondVariable);
+            secondVariable + firstVariable;
+            Number(secondVariable) - firstVariable;
 
             ////////////////////////////////////////////////////////////////////
 
@@ -274,7 +303,12 @@ describe("basics", function() {
             ////////////////////////////////////////////////////////////////////
             // Can you find a string that casts to `false` in an if() statement?
             // ✏️ ADD CODE HERE ✏️
+             const falsyString = "";
+             typeof falsyString;
+             if(falsyString) {
+                 throw new Error();
 
+             }
             ////////////////////////////////////////////////////////////////////
 
             expect(typeof falsyString).to.equal("string");
